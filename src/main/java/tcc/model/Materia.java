@@ -22,7 +22,7 @@ public class Materia {
 	@Column(name="nome", nullable=false)
 	private String nome;
 
-	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "materia")
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Horario> horarios;
 	
 	@Column(name="descricao", nullable=false)
