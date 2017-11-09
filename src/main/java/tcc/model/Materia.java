@@ -34,7 +34,7 @@ public class Materia {
 	@OneToMany
 	private List<Anotacao> anotacoes;
 	
-	@OneToMany
+	@OneToMany(mappedBy="materia")
 	private List<Convite> convites;
 	 
 	@OneToMany

@@ -6,9 +6,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -24,7 +26,9 @@ public class PlanoDeEnsino {
 	@Column(name="professor", nullable=false)
 	private String professor;
 	
-	@OneToMany(mappedBy="planoDeEnsino", cascade = CascadeType.PERSIST)
+
+//	@OneToMany(mappedBy="ideaProfile", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Assunto> assuntos;
 	
 	@JsonIgnore
