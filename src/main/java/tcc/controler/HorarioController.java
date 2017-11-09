@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import tcc.UtilidadePublica;
 import tcc.model.Horario;
 import tcc.repository.HorarioRepository;
 

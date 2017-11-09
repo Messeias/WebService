@@ -3,12 +3,16 @@ package tcc.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class PlanoDeEnsino {
@@ -20,8 +24,12 @@ public class PlanoDeEnsino {
 	@Column(name="professor", nullable=false)
 	private String professor;
 	
-	@OneToMany(mappedBy="planoDeEnsino")
+	@OneToMany(mappedBy="planoDeEnsino", cascade = CascadeType.PERSIST)
 	private List<Assunto> assuntos;
+	
+	@JsonIgnore
+	@OneToOne(mappedBy="planoDeEnsino")
+	private Materia materia;
 	
 	public PlanoDeEnsino() {
 		super();

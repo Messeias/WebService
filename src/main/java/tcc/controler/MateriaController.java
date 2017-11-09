@@ -69,11 +69,9 @@ public class MateriaController {
 	
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public ResponseEntity<String> save(@RequestBody Materia m, UriComponentsBuilder ucb){
+	public ResponseEntity<Materia> save(@RequestBody Materia m){
 		Materia cadastrando = materiaRepository.save(m);
-		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(ucb.path("/anotacao/{codMateria}").buildAndExpand(cadastrando.getCodMateria()).toUri());
-		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+		return new ResponseEntity<Materia>(cadastrando, HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(value="/{codMateria}", method=RequestMethod.DELETE)

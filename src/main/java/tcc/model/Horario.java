@@ -3,6 +3,7 @@ package tcc.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,7 @@ public class Horario {
 	private long codHorario;
 	
 	@Temporal(TemporalType.TIME)
-	@DateTimeFormat(style = "dd/hh:mm")
+	@DateTimeFormat(style = "DDD/hh:mm")
 	private Date hora;
 
 	@ManyToOne

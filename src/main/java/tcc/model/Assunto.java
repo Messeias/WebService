@@ -3,6 +3,7 @@ package tcc.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Assunto {
@@ -33,6 +36,7 @@ public class Assunto {
 	@Column(name="dataFim", nullable=false)
 	private Date dataFim;
 	
+	@JsonIgnore
 	@ManyToOne
 	private PlanoDeEnsino planoDeEnsino;
 

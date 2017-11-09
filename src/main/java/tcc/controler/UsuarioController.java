@@ -54,11 +54,9 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public ResponseEntity<String> save(@RequestBody Usuario usuario, UriComponentsBuilder ucb){
+	public ResponseEntity<Usuario> save(@RequestBody Usuario usuario){
 		Usuario cadastrando = usuarioRepository.save(usuario);
-		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(ucb.path("/usuario/{codusuario}").buildAndExpand(cadastrando.getCodUsuario()).toUri());
-		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+		return new ResponseEntity<Usuario>(cadastrando, HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(value="/{codusuario}", method=RequestMethod.DELETE)
