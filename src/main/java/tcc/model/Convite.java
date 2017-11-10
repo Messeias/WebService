@@ -1,6 +1,7 @@
 package tcc.model;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,10 +19,10 @@ public class Convite {
 	@Column(name="status", nullable=false)
 	private boolean status;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.MERGE, optional=false)
 	private Usuario usuario;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.MERGE, optional=false)
 	private Materia materia;
 	
 	public Convite() {

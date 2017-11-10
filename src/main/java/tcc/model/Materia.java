@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Materia {
 
@@ -34,7 +36,8 @@ public class Materia {
 	@OneToMany
 	private List<Anotacao> anotacoes;
 	
-	@OneToMany(mappedBy="materia")
+	@JsonIgnore
+	@OneToMany(mappedBy="materia", cascade=CascadeType.ALL)
 	private List<Convite> convites;
 	 
 	@OneToMany
