@@ -61,6 +61,8 @@ public class MateriaController {
 	public ResponseEntity<List<Materia>> findByAluno(@PathVariable("idUsuario") Long id){
 		List<Materia> m = materiaRepository.findByAluno(id);
 		
+//		System.out.println(m.get(0).getHorarios().get(0).getHora().toString());
+		
 		if(m == null) 
 			return new ResponseEntity(HttpStatus.NOT_FOUND);
 		

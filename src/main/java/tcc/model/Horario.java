@@ -21,7 +21,7 @@ public class Horario {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long codHorario;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIME)
 	@DateTimeFormat(style = "DDD/hh:mm")
 	private Date hora;
 
