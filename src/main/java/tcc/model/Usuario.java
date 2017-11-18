@@ -3,12 +3,14 @@ package tcc.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -42,8 +44,8 @@ public class Usuario implements Serializable{
 	@OneToMany(mappedBy="usuario")
 	private List<Convite> convites;
 	
-	@OneToMany(mappedBy="usuario")
-	private List<Anotacao> anotacoes;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Anotacao anotacoes;
 	
 	@OneToMany(mappedBy="usuario")
 	private List<Tarefa> tarefas;
@@ -53,7 +55,7 @@ public class Usuario implements Serializable{
 	}
 	
 	public Usuario(String celular, String email, String senha, String nome, List<Convite> convites,
-			List<Anotacao> anotacoes, List<Tarefa> tarefas) {
+			Anotacao anotacoes, List<Tarefa> tarefas) {
 		super();
 		this.celular = celular;
 		this.email = email;
@@ -94,6 +96,30 @@ public class Usuario implements Serializable{
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public List<Convite> getConvites() {
+		return convites;
+	}
+
+	public void setConvites(List<Convite> convites) {
+		this.convites = convites;
+	}
+
+	public Anotacao getAnotacoes() {
+		return anotacoes;
+	}
+
+	public void setAnotacoes(Anotacao anotacoes) {
+		this.anotacoes = anotacoes;
+	}
+
+	public List<Tarefa> getTarefas() {
+		return tarefas;
+	}
+
+	public void setTarefas(List<Tarefa> tarefas) {
+		this.tarefas = tarefas;
 	}
 
 	@Override

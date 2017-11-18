@@ -49,6 +49,17 @@ public class PlanoDeEnsinoController {
 		return new ResponseEntity<PlanoDeEnsino>(p, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/materia/{codMateria}", method=RequestMethod.GET)
+	public ResponseEntity<PlanoDeEnsino> buscarPorMateria(@PathVariable("codMateria") Long codMateria){
+		// buscar id plano de ensino
+		PlanoDeEnsino p = planoDeEnsinoRepository.buscarPorMateria(codMateria);
+		
+		if(p == null) 
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		
+		return new ResponseEntity<PlanoDeEnsino>(p, HttpStatus.OK);
+	}
+	
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
 	public ResponseEntity<String> save(@RequestBody PlanoDeEnsino p, UriComponentsBuilder ucb){

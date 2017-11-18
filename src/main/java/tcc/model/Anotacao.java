@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Anotacao {
@@ -23,10 +26,12 @@ public class Anotacao {
 	@Column(name="midia", nullable=true)
 	private byte[] midia;
 		
-	@ManyToOne
+	@JsonIgnore
+	@OneToOne(mappedBy="anotacoes")
 	private Usuario usuario;
 	
-	@ManyToOne
+	@JsonIgnore
+	@OneToOne(mappedBy="anotacoes")
 	private Materia materia;
 	
 	public Anotacao() {

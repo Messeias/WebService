@@ -33,8 +33,8 @@ public class Materia {
 	@Column(name="publico", nullable=false)
 	private boolean publico;
 	
-	@OneToMany
-	private List<Anotacao> anotacoes;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Anotacao anotacoes;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="materia", cascade=CascadeType.ALL)
@@ -53,7 +53,7 @@ public class Materia {
 
 	
 	
-	public Materia(String nome, List<Horario> horarios, String descricao, boolean publico, List<Anotacao> anotacoes,
+	public Materia(String nome, List<Horario> horarios, String descricao, boolean publico, Anotacao anotacoes,
 			List<Convite> convites, List<Tarefa> tarefas) {
 		super();
 		this.nome = nome;
@@ -107,11 +107,11 @@ public class Materia {
 		this.publico = publico;
 	}
 
-	public List<Anotacao> getAnotacoes() {
+	public Anotacao getAnotacoes() {
 		return anotacoes;
 	}
 
-	public void setAnotacoes(List<Anotacao> anotacoes) {
+	public void setAnotacoes(Anotacao anotacoes) {
 		this.anotacoes = anotacoes;
 	}
 
