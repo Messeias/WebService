@@ -24,7 +24,7 @@ public class Materia {
 	@Column(name="nome", nullable=false)
 	private String nome;
 
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Horario> horarios;
 	
 	@Column(name="descricao", nullable=false)
@@ -43,7 +43,8 @@ public class Materia {
 	@OneToMany
 	private List<Tarefa> tarefas;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
 	private PlanoDeEnsino planoDeEnsino;
 	
 	public Materia() {

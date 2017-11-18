@@ -28,7 +28,7 @@ public class PlanoDeEnsino {
 	
 
 //	@OneToMany(mappedBy="ideaProfile", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Assunto> assuntos;
 	
 	@JsonIgnore
