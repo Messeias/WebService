@@ -33,6 +33,19 @@ public class UsuarioController {
 		return new ResponseEntity<List<Usuario>>(usuarios, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/email/", method = RequestMethod.POST)
+	public ResponseEntity<Usuario> findByEmail(@RequestBody Usuario email){
+		Usuario usuarios = usuarioRepository.findByEmail(email.getEmail());
+		
+		System.out.println(email.getEmail());
+		
+		if(usuarios == null){
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+		}
+		
+		return new ResponseEntity<Usuario>(usuarios, HttpStatus.OK);
+	}
+	
 	@RequestMapping(value="/{codusuario}", method=RequestMethod.GET)
 	public ResponseEntity<Usuario> findById(@PathVariable("codusuario") Long codusuario){
 		Usuario usuario = usuarioRepository.findOne(codusuario);

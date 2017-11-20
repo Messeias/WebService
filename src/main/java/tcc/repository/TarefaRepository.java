@@ -16,6 +16,13 @@ public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
 	@Query("SELECT t FROM Tarefa t INNER JOIN t.materia m ON m.codMateria = t.materia WHERE t.dataEntrega = ? AND t.materia.codMateria IN " + 
 			"(SELECT m2.codMateria FROM Convite c INNER JOIN c.materia m2  WHERE c.usuario.codUsuario = ?)")
 	List<Tarefa> findByData(Date data, long codUsuario);
+	
+	
+	@Query("SELECT t FROM Tarefa t INNER JOIN t.materia m ON m.codMateria = t.materia WHERE m.codMateria = ?")
+	List<Tarefa> findByMateria(Long idMateria);
+	
+	@Query("SELECT t FROM Tarefa t INNER JOIN t.materia m ON m.codMateria = t.materia WHERE t.dataEntrega = ? AND t.materia.codMateria = ?")
+	List<Tarefa> findByDataMateria(Date data, long codMateria);
 }
 
 

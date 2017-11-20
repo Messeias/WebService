@@ -12,4 +12,6 @@ public interface ConviteRepository extends JpaRepository<Convite, Long>{
 	
 //	@Query("SELECT m FROM Convite c INNER JOIN c.Materia m ON m.cod_materia = c._materia_cod_materia WHERE c.usuario_cod_usuario = ?")
 //	List<Materia> buscarMateriaPorAluno(int id);
+	
+	
 }

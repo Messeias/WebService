@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Tarefa {
 
@@ -36,9 +38,11 @@ public class Tarefa {
 	@Column(name="peso", nullable=false)
 	private double peso;	
 	
+	@JsonIgnore
 	@ManyToOne
 	private Usuario usuario;
 	
+//	@JsonIgnore
 	@ManyToOne
 	private Materia materia;
 	

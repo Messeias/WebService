@@ -36,6 +36,16 @@ public class MateriaController {
 		return new ResponseEntity<List<Materia>>(materias, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="pesquisar", method = RequestMethod.GET)
+	public ResponseEntity<List<Materia>> findAllPublic(){
+		List<Materia> materias = materiaRepository.findByPublico(1);
+		
+		if(materias.isEmpty()) 
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+		
+		return new ResponseEntity<List<Materia>>(materias, HttpStatus.OK);
+	}
+	
 	
 	@RequestMapping(value="/{codMateria}", method=RequestMethod.GET)
 	public ResponseEntity<Materia> findById(@PathVariable("codMateria") Long codMateria){
@@ -49,7 +59,7 @@ public class MateriaController {
 	
 	@RequestMapping(value="/buscar/{nome}", method=RequestMethod.GET)
 	public ResponseEntity<List<Materia>> findByNome(@PathVariable("nome") String nome){
-		List<Materia> m = materiaRepository.findByNomeContaining(nome);
+		List<Materia> m = materiaRepository.findByNomeContainingAndPublico(nome, true);
 		
 		if(m == null) 
 			return new ResponseEntity(HttpStatus.NOT_FOUND);

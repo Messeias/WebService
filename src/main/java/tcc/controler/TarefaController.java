@@ -59,9 +59,29 @@ public class TarefaController {
 		return new ResponseEntity<List<Tarefa>>(tarefas, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="materia/{codMateria}", method=RequestMethod.GET)
+	public ResponseEntity<List<Tarefa>> findByMateria(@PathVariable("codMateria") Long codMateria){
+		List<Tarefa> tarefas = tarefaRepository.findByMateria(codMateria);
+		
+		if(tarefas == null) 
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		
+		return new ResponseEntity<List<Tarefa>>(tarefas, HttpStatus.OK);
+	}
+	
 	@RequestMapping(value="calendario", method=RequestMethod.GET)
 	public ResponseEntity<List<Tarefa>> findByData(@RequestParam("dia") @DateTimeFormat(pattern="yyyy-MM-dd") Date dia, @RequestParam("codUsuario") long codUsuario){
 		List<Tarefa> tarefas = tarefaRepository.findByData(dia, codUsuario);
+		
+		if(tarefas == null) 
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		
+		return new ResponseEntity<List<Tarefa>>(tarefas, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="calendario/materia", method=RequestMethod.GET)
+	public ResponseEntity<List<Tarefa>> findByDataMateria(@RequestParam("dia") @DateTimeFormat(pattern="yyyy-MM-dd") Date dia, @RequestParam("codMateria") long codMateria){
+		List<Tarefa> tarefas = tarefaRepository.findByDataMateria(dia, codMateria);
 		
 		if(tarefas == null) 
 			return new ResponseEntity(HttpStatus.NOT_FOUND);

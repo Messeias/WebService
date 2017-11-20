@@ -10,8 +10,10 @@ import tcc.model.Materia;
 public interface MateriaRepository extends JpaRepository<Materia, Long>{
 	
 	//@Query("SELECT m FROM Materia m WHERE m.nome LIKE ?")
-    List<Materia> findByNomeContaining(String nome);
+    List<Materia> findByNomeContainingAndPublico(String nome, boolean n);
     
     @Query("SELECT m FROM Convite c INNER JOIN c.materia m ON m.codMateria = c.materia WHERE c.usuario.codUsuario = ?")
 	List<Materia> findByAluno(Long id);
+    
+    List<Materia> findByPublico(int n);
 }

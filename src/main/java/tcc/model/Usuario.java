@@ -14,6 +14,8 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.validator.constraints.Email;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Usuario implements Serializable{
@@ -41,6 +43,7 @@ public class Usuario implements Serializable{
 	@Column(name="nome", nullable=false)
 	private String nome;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="usuario")
 	private List<Convite> convites;
 	
