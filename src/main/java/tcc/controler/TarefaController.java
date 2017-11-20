@@ -120,12 +120,6 @@ public class TarefaController {
 		
 	        Tarefa currenttarefa = tarefaRepository.findOne(codtarefa);
 	        
-			Date dt = tarefa.getDataEntrega();
-			Calendar c = Calendar.getInstance(); 
-			c.setTime(dt); 
-			c.add(Calendar.DATE, 1);
-			dt = c.getTime();
-			tarefa.setDataEntrega(dt);
 	 
 	        if (currenttarefa == null) {
 	            return new ResponseEntity(new CustomErrorType("Nao foi possivel atualizar. Antoacao com codtarefa " + codtarefa + " não encontrada."),
